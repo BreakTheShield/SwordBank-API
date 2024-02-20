@@ -9,7 +9,7 @@ create table users
     password       varchar(1024)                 NOT NULL,
     phone          varchar(20) UNIQUE            NOT NULL,
     account_number integer UNIQUE,
-    balance        BIGINT unsigned default 100000 NOT NULL,
+    balance        BIGINT unsigned default 10000000 NOT NULL,
     is_admin       boolean         default false,
     email          varchar(255)                  NOT NULL,
     membership     varchar(255)                  NOT NULL    

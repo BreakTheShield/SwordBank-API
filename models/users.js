@@ -39,6 +39,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       unique: true
     },
+    is_loan: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
     membership: {
       type: DataTypes.STRING,
       allowNull: false

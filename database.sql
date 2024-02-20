@@ -4,15 +4,26 @@ use dvba;
 
 create table users
 (
-    id             integer PRIMARY KEY auto_increment,
-    username       varchar(100) UNIQUE           NOT NULL,
+    id             integer auto_increment,
+    username       varchar(100) UNIQUE          NOT NULL,
     password       varchar(1024)                 NOT NULL,
     phone          varchar(20) UNIQUE            NOT NULL,
     account_number integer UNIQUE,
-    balance        BIGINT unsigned default 10000000 NOT NULL,
+    balance        BIGINT unsigned default 100000 NOT NULL,
     is_admin       boolean         default false,
     email          varchar(255)                  NOT NULL,
-    membership     varchar(255)                  NOT NULL    
+    membership     varchar(255)                  NOT NULL,
+    is_loan        boolean     default false,
+    PRIMARY KEY (id, username)
+) engine = innodb;
+
+create table loan
+(
+   id            integer PRIMARY KEY auto_increment,
+   username       varchar(100) UNIQUE          NOT NULL,
+   foreign key(username) references users(username),
+   loan_amount      BIGINT                    NOT NULL
+   
 ) engine = innodb;
 
 create table transactions
@@ -41,7 +52,7 @@ create table smsauths
 
 INSERT INTO `users`
 values (default, "admin", "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", "01011111111" , 999999, default, true,
-        'admin@admin', "ADMIN");
+        'admin@admin', "ADMIN", default);
 
 UPDATE users SET balance=100000000 WHERE username = 'vipuser';
 

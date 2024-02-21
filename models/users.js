@@ -34,6 +34,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: false
     },
+    is_loan: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,

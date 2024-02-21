@@ -29,5 +29,6 @@ module.exports = function(sequelize, DataTypes) {
             targetKey: 'username'
         });
     };
+
 	return loan;
 };

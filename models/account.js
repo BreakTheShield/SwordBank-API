@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
           balance: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            defaultValue: 10000
+            defaultValue: 1000000
           }
 	}, {
         tableName: 'account',

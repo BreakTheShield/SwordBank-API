@@ -12,6 +12,7 @@ const checkRouter = require("../lib/api/Auth");
 const noticeRouter = require("../lib/api/notice");
 const qnaRouter = require("../lib/api/qna");
 const accountRouter = require("../lib/api/Account");
+const mydataRouter = require("../lib/api/Mydata");
 
 router.use("/balance", balanceRouter);
 router.use("/transactions", transactionsRouter)
@@ -22,6 +23,7 @@ router.use("/auth", checkRouter);
 router.use("/notice", noticeRouter);
 router.use("/qna", qnaRouter);
 router.use("/account", accountRouter);
+router.use("/mydata", mydataRouter);
 
 router.get("/download/:filename", (req, res) => {
     const filename = req.params.filename;

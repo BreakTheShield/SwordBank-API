@@ -36,8 +36,9 @@ const validateUserToken = function(req, res, next) {
           where: {
               username: data.username
           },
-          attributes: ["account_number"]
+          attributes: ["account_number","username"] //여기에 username 추가했음.
       }).then((data) => {
+          req.username = data.username; //여기에 username을 추가로 넘겨줌.
           req.account_number = data.account_number;
           next();
       }).catch((err) => {

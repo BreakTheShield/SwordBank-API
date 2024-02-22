@@ -51,6 +51,47 @@ const validateUserToken = function(req, res, next) {
   });
 };
 
+const validateNumberToken = function(req, res, next) {
+    var r = new Response();
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1];
+
+  if (token == null) {
+      r.status = statusCodes.NOT_AUTHORIZED;
+      r.data = {
+        "message": "Not authorized"
+      }
+      return res.json(encryptResponse(r));
+  }
+
+  jwt.verify(token, "secret", (err, data) => {
+      if (err) {
+          r.status = statusCodes.FORBIDDEN;
+          r.data = {
+              "message": err.toString()
+          }
+          return res.json(encryptResponse(r));
+      }
+      
+      Model.users.findOne({
+          where: {
+              username: data.username
+          },
+          attributes: ["phone","username"] //여기에 username 추가했음.
+      }).then((data) => {
+          req.username = data.username; //여기에 username을 추가로 넘겨줌.
+          req.phone = data.phone;
+          next();
+      }).catch((err) => {
+        r.status = statusCodes.SERVER_ERROR;
+        r.data = {
+            "message": err.toString()
+        };
+        return res.json(encryptResponse(r));
+    });
+  });
+};
+
 /**
  * Admin token validation middleware
  * This middleware validates admin JWT token, extracts the associated
@@ -206,6 +247,7 @@ const tokenCheck = function(req, res, next) {
 module.exports =  {
     validateUserToken,
     validateAdminToken,
+    validateNumberToken,
     admCheck,
     tokenCheck
 }

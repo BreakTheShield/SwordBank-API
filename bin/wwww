@@ -8,14 +8,14 @@ var app = require('../app');
 var debug = require('debug')('dvba-backend:server');
 var http = require('http');
 var models = require("../models");
-
+var cors = require('cors');
 /**
  * Get port from environment and store in Express.
  */
 
 var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
-
+app.use(cors());
 /**
  * Create HTTP server.
  */

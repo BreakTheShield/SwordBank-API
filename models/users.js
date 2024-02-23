@@ -39,16 +39,17 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: false
     },
+    is_mydata: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true
     },
-    is_loan: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false
-    },
+   
     membership: {
       type: DataTypes.STRING,
       allowNull: false

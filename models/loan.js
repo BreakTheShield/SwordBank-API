@@ -17,6 +17,10 @@ module.exports = function(sequelize, DataTypes) {
                 min: 0
             }
         },
+        loan_time: {
+            type: DataTypes.DATE,
+            allowNull: false
+        }
 	},
     {
         tableName: "loan", 

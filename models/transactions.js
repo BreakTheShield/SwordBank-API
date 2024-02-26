@@ -5,7 +5,15 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true,
             autoIncrement: true,
         },
+        from_bankcode: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         from_account: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        to_bankcode: {
             type: DataTypes.INTEGER,
             allowNull: false
         },
